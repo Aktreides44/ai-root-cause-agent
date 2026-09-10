@@ -1,19 +1,14 @@
 services:
-  clickhouse:
-    image: clickhouse/clickhouse-server:latest
-    container_name: root-cause-clickhouse
-
+  clickstack:
+    image: clickhouse/clickstack-all-in-one:latest
+    container_name: root-cause-clickstack
     ports:
+      - "8080:8080"
       - "8123:8123"
-      - "9000:9000"
-
-    environment:
-      CLICKHOUSE_DB: observability
-      CLICKHOUSE_USER: default
-      CLICKHOUSE_DEFAULT_ACCESS_MANAGEMENT: 1
-
+      - "4317:4317"
+      - "4318:4318"
     volumes:
-      - clickhouse_data:/var/lib/clickhouse
+      - clickstack_data:/var/lib/clickhouse
 
 volumes:
-  clickhouse_data:
+  clickstack_data:
