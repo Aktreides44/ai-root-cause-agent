@@ -10,5 +10,19 @@ services:
     volumes:
       - clickstack_data:/var/lib/clickhouse
 
+  neo4j:
+    image: neo4j:5
+    container_name: root-cause-neo4j
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    environment:
+      NEO4J_AUTH: neo4j/rootcause
+    volumes:
+      - neo4j_data:/data
+      - neo4j_logs:/logs
+
 volumes:
   clickstack_data:
+  neo4j_data:
+  neo4j_logs:
