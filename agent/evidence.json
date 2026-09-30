@@ -1,0 +1,108 @@
+{
+  "incident": "Payment service failure",
+  "collected_at": "2026-09-17T16:38:16.320500",
+  "logs": [
+    {
+      "Timestamp": "2026-09-10 18:37:34.903325",
+      "SeverityText": "error",
+      "Body": "Visa cache full: cannot add new item."
+    },
+    {
+      "Timestamp": "2026-09-10 18:36:27.704325",
+      "SeverityText": "error",
+      "Body": "Visa cache full: cannot add new item."
+    }
+  ],
+  "traces": [
+    {
+      "Timestamp": "2026-09-10 18:38:03.209431",
+      "SpanName": "oteldemo.PaymentService/Charge",
+      "StatusCode": "Error",
+      "StatusMessage": "Visa cache full: cannot add new item."
+    },
+    {
+      "Timestamp": "2026-09-10 18:38:03.202485",
+      "SpanName": "oteldemo.CheckoutService/PlaceOrder",
+      "StatusCode": "Error",
+      "StatusMessage": "failed to charge card: could not charge the card: rpc error: code = Unknown desc = Visa cache full: cannot add new item."
+    },
+    {
+      "Timestamp": "2026-09-10 18:34:00.580921",
+      "SpanName": "oteldemo.PaymentService/Charge",
+      "StatusCode": "Error",
+      "StatusMessage": "Visa cache full: cannot add new item."
+    },
+    {
+      "Timestamp": "2026-09-10 18:34:00.575934",
+      "SpanName": "oteldemo.CheckoutService/PlaceOrder",
+      "StatusCode": "Error",
+      "StatusMessage": "failed to charge card: could not charge the card: rpc error: code = Unknown desc = Visa cache full: cannot add new item."
+    },
+    {
+      "Timestamp": "2026-09-10 18:33:25.912552",
+      "SpanName": "oteldemo.PaymentService/Charge",
+      "StatusCode": "Error",
+      "StatusMessage": "Visa cache full: cannot add new item."
+    },
+    {
+      "Timestamp": "2026-09-10 18:33:25.906881",
+      "SpanName": "oteldemo.CheckoutService/PlaceOrder",
+      "StatusCode": "Error",
+      "StatusMessage": "failed to charge card: could not charge the card: rpc error: code = Unknown desc = Visa cache full: cannot add new item."
+    }
+  ],
+  "metrics": [
+    {
+      "TimeUnix": "2026-09-10 18:38:42",
+      "Value": 25.0
+    },
+    {
+      "TimeUnix": "2026-09-10 18:37:42",
+      "Value": 25.0
+    },
+    {
+      "TimeUnix": "2026-09-10 18:36:42",
+      "Value": 25.0
+    },
+    {
+      "TimeUnix": "2026-09-10 18:35:42",
+      "Value": 25.0
+    },
+    {
+      "TimeUnix": "2026-09-10 18:34:42",
+      "Value": 25.0
+    },
+    {
+      "TimeUnix": "2026-09-10 18:33:42",
+      "Value": 25.0
+    },
+    {
+      "TimeUnix": "2026-09-10 18:32:42",
+      "Value": 25.0
+    },
+    {
+      "TimeUnix": "2026-09-10 18:31:42",
+      "Value": 25.0
+    },
+    {
+      "TimeUnix": "2026-09-10 18:30:42",
+      "Value": 22.0
+    },
+    {
+      "TimeUnix": "2026-09-10 18:29:42",
+      "Value": 19.0
+    }
+  ],
+  "dependencies": [
+    {
+      "service": "payment",
+      "relationship": "USES",
+      "dependency": "redis"
+    },
+    {
+      "service": "payment",
+      "relationship": "CALLS",
+      "dependency": "visa-validation"
+    }
+  ]
+}
