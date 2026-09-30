@@ -242,11 +242,6 @@ source agent/.venv/bin/activate
 
 Install the Python packages required by the agent.
 
-If a `requirements.txt` file is added to the repository:
-
-```bash
-pip install -r agent/requirements.txt
-```
 
 ### Step 4: Configure Environment Variables
 
