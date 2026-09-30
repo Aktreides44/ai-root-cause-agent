@@ -1,8 +1,22 @@
+# Environment variables and secrets
 .env
-*.log
+.env.*
+!.env.example
+
+# Python
 __pycache__/
-*.pyc
-.vscode/
+*.py[cod]
+.venv/
+venv/
+env/
+
+# IDE
 .idea/
-sample.tar.gz
-agent/.env
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log

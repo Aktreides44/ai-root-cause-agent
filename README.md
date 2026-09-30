@@ -1,43 +1,86 @@
 # AI-Powered Root Cause Analysis Agent
 
-An AI-powered incident investigation agent that combines:
+An AI-assisted Root Cause Analysis (RCA) agent that investigates application incidents using observability data from ClickHouse and service dependency information from Neo4j.
 
-- **ClickHouse** for observability data and analytical queries
-- **Neo4j** for service and dependency relationships
-- **LibreChat** as the conversational AI interface
-- **LLM** for investigation and reasoning
-- **Python** for agent tools and orchestration
+The project combines a Python command-line interface, evidence collection, and a Groq-powered language model to help engineers understand errors, trace failure propagation, and generate structured incident analysis.
 
-## Project Goal
+## Project Overview
 
-Build an AI agent that can investigate incidents in a distributed
-microservices environment and identify likely root causes.
+The agent is designed to answer questions such as:
 
-The initial use case is based on ClickHouse's Observability use case
-and its OpenTelemetry e-commerce demo dataset.
+- What happened during an application incident?
+- Which service reported the error?
+- How did the failure propagate between services?
+- What evidence is available in logs, traces, metrics, and service dependencies?
+- What information is still unknown?
+- What should be investigated next?
 
 ## Architecture
 
 ```text
-User
-  |
-  v
-LibreChat
-  |
-  v
-AI Agent / LLM
-  |
-  +--------------------+
-  |                    |
-  v                    v
-ClickHouse            Neo4j
-  |                    |
-Logs                  Service
-Metrics               Dependencies
-Traces                Relationships
-  |                    |
-  +---------+----------+
-            |
-            v
-       Root Cause
-        Analysis
+Engineer
+   |
+   v
+Python CLI Agent
+   |
+   v
+Evidence Collection
+   |
+   +--------------------+
+   |                    |
+   v                    v
+ClickHouse             Neo4j
+Logs                   Service Dependencies
+Traces                 Dependency Relationships
+Metrics
+   |                    |
+   +---------+----------+
+             |
+             v
+      Evidence Summary
+             |
+             v
+       Groq LLM
+             |
+             v
+    Root Cause Analysis
+             |
+             v
+       Engineer
+
+## Technology Stack
+
+| Technology | Purpose |
+|---|---|
+| Python | Core agent development and CLI interface |
+| ClickHouse | Storage and querying of observability data |
+| Neo4j | Graph-based service dependency analysis |
+| Groq API | Large Language Model for generating RCA responses |
+| OpenTelemetry | Application logs, traces, and metrics |
+| Docker | Running the supporting infrastructure |
+| Python-dotenv | Environment variable and configuration management |
+| Git & GitHub | Version control and project management |
+
+## Project Structure
+
+```text
+ai-root-cause-agent-cli/
+│
+├── agent/
+│   ├── cli_agent.py
+│   ├── rca_agent.py
+│   ├── evidence_collector.py
+│   ├── offline_rca.py
+│   ├── cli_agent_backup.py
+│   ├── rca_agent_backup.py
+│   ├── test_connections.py
+│   ├── test_rca_queries.py
+│   ├── evidence.json
+│   ├── rca_report.txt
+│   └── .env.example
+│
+├── clickhouse/
+├── neo4j/
+├── docs/
+├── .gitignore
+└── README.md
